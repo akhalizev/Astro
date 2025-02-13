@@ -1,5 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro';
+//import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = "Home Page";
@@ -14,17 +16,9 @@ const pageTitle = "Home Page";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Navigation/>
+		<Header/>
 		<h1>{pageTitle}</h1>
-		<p>It's so fast, you won't believe it's not magic!</p>
-		<p>Here's a list of my favorite things:</p>
-		<ul>
-			<li>Fast</li>
-			<li>Fast</li>
-			<li>Fast</li>	
-		</ul>
-		<p>And here's a picture of a cat:</p>
-		<img src="/cat.jpg" alt="A cute cat" />
-		<p>Thanks for visiting!</p>
-	</body>
+		<Footer/>
+		<script> import "../scripts/menu.js";</script>
+		</body>
 </html>
