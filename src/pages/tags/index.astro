@@ -1,13 +1,11 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-const { frontmatter } = Astro.props;
-const tags = frontmatter.tags;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const pageTitle = "Tag Index";
+const allPosts = await getCollection('blog');
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
-<BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+<BaseLayout pageTitle={pageTitle}>
   <div class="tags">{tags.map((tag) => {
     return (
       <p class="tag">
@@ -15,7 +13,6 @@ const tags = frontmatter.tags;
       </p>
     )
   })}</div>
-  <slot />
 </BaseLayout>
 
 <style>
